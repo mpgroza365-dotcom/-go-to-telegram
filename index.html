@@ -3,36 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تخطي الإعلان للوصول للقناة</title>
+    <title>جاري التحويل | عشاق السينما</title>
     <style>
-        body { font-family: sans-serif; text-align: center; background: #f4f4f9; padding: 20px; }
-        .container { max-width: 400px; margin: 100px auto; padding: 20px; background: white; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        #skip-btn { display: none; padding: 15px 30px; background: #28a745; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; text-decoration: none; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; text-align: center; background: #1a1a1a; color: white; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .container { max-width: 400px; width: 100%; padding: 30px; background: #2d2d2d; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h2 { margin-bottom: 20px; color: #ffcc00; }
+        #progress-bar { width: 100%; height: 10px; background: #444; border-radius: 5px; overflow: hidden; margin: 20px 0; }
+        #progress { width: 0%; height: 100%; background: #ffcc00; transition: width 5s linear; }
+        .btn { display: none; padding: 15px 40px; background: #ffcc00; color: #1a1a1a; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; text-decoration: none; font-size: 18px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>الرجاء الانتظار...</h2>
-    <p id="msg">يتم تحميل المحتوى، يرجى دعمنا بالنقر على الإعلان لإظهار رابط القناة.</p>
+    <h2>عشاق السينما</h2>
+    <p id="status">جاري التحقق من الرابط...</p>
     
-    <!-- رابط الإعلان -->
+    <div id="progress-bar"><div id="progress"></div></div>
+    
     <a href="https://www.effectivecpmnetwork.com/g5kxs26r?key=a4a30dc387f7432db0109c60fbaa20f8" 
-       target="_blank" 
-       onclick="showSkip()">اضغط هنا لدعمنا وتحميل الصفحة</a>
-    
-    <br><br>
-    <button id="skip-btn" onclick="goToChannel()">تخطي الإعلان والذهاب للقناة</button>
+       target="_blank" id="ad-link" class="btn" onclick="showFinalBtn()">اضغط هنا للمتابعة</a>
 </div>
 
 <script>
-    function showSkip() {
-        document.getElementById('msg').innerText = "شكراً لدعمك! الآن يمكنك التخطي.";
-        document.getElementById('skip-btn').style.display = 'inline-block';
-    }
-
-    function goToChannel() {
-        window.location.href = "https://t.me/+jInL6dOv_uo0YTM0";
+    // تفعيل شريط التحميل
+    document.getElementById('progress').style.width = '100%';
+    
+    function showFinalBtn() {
+        setTimeout(() => {
+            document.getElementById('status').innerText = "تم التحقق! اضغط للذهاب للقناة:";
+            document.getElementById('ad-link').innerText = "الانتقال إلى القناة";
+            document.getElementById('ad-link').onclick = function() { window.location.href = "https://t.me/+jInL6dOv_uo0YTM0"; };
+        }, 1000);
     }
 </script>
 
